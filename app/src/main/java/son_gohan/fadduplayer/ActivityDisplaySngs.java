@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class ActivityDisplaySngs extends AppCompatActivity implements View.OnClickListener {
 
     Button importButton;
+    private String[] STAR = {"*"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +39,21 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
         Cursor cursor;
         ArrayList<Song> arrayList = new ArrayList<Song>();
         Uri allSongUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String selection = "";
-        if()
+        String selection = MediaStore.Audio.Media.IS_MUSIC+"!= 0";
+        if(isSdCardPresent())
+        {
+            cursor = managedQuery(allSongUri,STAR,selection,null,null);
+            if(cursor!=null)
+            {
+                if(cursor.moveToFirst())
+                {
+                    do {
+                        Song song = new Song();
+                        String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
+                    }
+                }
+            }
+        }
         return arrayList;
     }
     private static boolean isSdCardPresent()
