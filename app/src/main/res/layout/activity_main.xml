@@ -6,4 +6,41 @@
     android:background="@drawable/music_bg"
     tools:context=".ActivityDisplaySngs">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No songs available right now"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:textSize="50dp"
+            android:textColor="#fff"
+            android:layout_marginTop="116dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/no_song_txt"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_song_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
+            android:text="Import songs from SD card"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:background="#000"
+            android:textColor="#fff"
+
+            android:layout_margin="10dp"
+
+
+            />
+    </RelativeLayout>
 </RelativeLayout>
