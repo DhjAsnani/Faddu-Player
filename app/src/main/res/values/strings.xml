@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Faddu Player</string>
+    <string name="import_button">Import songs from SD card</string>
 </resources>

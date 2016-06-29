@@ -32,12 +32,12 @@
             android:layout_below="@+id/no_song_txt"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="44dp"
-            android:text="Import songs from SD card"
+            android:text="@string/import_button"
             android:textSize="20dp"
             android:textStyle="italic"
             android:background="#000"
             android:textColor="#fff"
-
+            android:id="@+id/import_btn"
             android:layout_margin="10dp"
 
 
