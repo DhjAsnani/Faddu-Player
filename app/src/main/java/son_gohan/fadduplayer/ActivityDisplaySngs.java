@@ -1,5 +1,6 @@
 package son_gohan.fadduplayer;
 
+import android.content.ContentUris;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
@@ -50,11 +51,25 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
                     do {
                         Song song = new Song();
                         String data = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME));
-                    }
+                        String[] res = data.split("\\.");
+                        song.setmSongName(res[0]);
+                        song.setmSongFullPath(cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA)));
+                        song.setmSongId(cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media._ID)));
+                        song.setmSongAlbumName(cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM)));
+                        song.setmSongUri(ContentUris.withAppendedId(
+                                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                                cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
+                        ));
+                        String duration =(cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION)));
+                        song.setmSongDuration(duration);
+                        arrayList.add(song);
+                    }while (cursor.moveToNext());
+                    return arrayList;
                 }
+                cursor.close();
             }
         }
-        return arrayList;
+        return null;
     }
     private static boolean isSdCardPresent()
     {
