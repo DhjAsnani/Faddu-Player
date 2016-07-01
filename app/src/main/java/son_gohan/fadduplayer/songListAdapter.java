@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import java.util.Random;
 
 import org.w3c.dom.Text;
 
@@ -60,9 +61,12 @@ public class songListAdapter  extends BaseAdapter{
         String[] randomval = {"1","0","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
         for(int i=0;i<6;i++)
         {
-            
+            color+=randomval[new Random().nextInt(16)];
         }
-
+        if(color.length()!=1)
+        {
+            relativeLayout.setBackgroundColor(Integer.parseInt(color));
+        }
         imageView_song.setImageResource(R.drawable.abcd);
         textView_name.setText(SongList.get(position).getmSongName());
         textView_album.setText(SongList.get(position).getmSongAlbumName());
