@@ -39,8 +39,22 @@
             android:textColor="#fff"
             android:id="@+id/import_btn"
             android:layout_margin="10dp"
-
-
             />
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/imported_list_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <ListView
+            android:id="@+id/list_importer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@drawable/abcd"
+            android:dividerHeight="1dp"
+            ></ListView>
+
+    </LinearLayout>
 </RelativeLayout>
