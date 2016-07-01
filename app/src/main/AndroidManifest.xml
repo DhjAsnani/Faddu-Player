@@ -16,6 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".MusicService">
+            <intent-filter>
+                <action android:name="son_gohan.fadduplayer.STOP"/>
+                <action android:name="son_gohan.fadduplayer.NEXT"/>
+                <action android:name="son_gohan.fadduplayer.PREVIOUS"/>
+                <action android:name="son_gohan.fadduplayer.PAUSE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
