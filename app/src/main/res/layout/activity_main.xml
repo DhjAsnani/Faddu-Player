@@ -46,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+      >
         <ListView
             android:id="@+id/list_importer"
             android:layout_width="match_parent"
@@ -55,6 +56,13 @@
             android:divider="@drawable/abcd"
             android:dividerHeight="1dp"
             ></ListView>
-
+        <MediaController
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mediaController"
+            android:layout_alignParentBotton="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            />
     </LinearLayout>
 </RelativeLayout>
