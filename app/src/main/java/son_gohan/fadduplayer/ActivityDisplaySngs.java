@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
 
     Button importButton;
     private String[] STAR = {"*"};
+    ListView songListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
     {
         importButton = (Button) findViewById(R.id.import_btn);
         importButton.setOnClickListener(ActivityDisplaySngs.this);
+        songListView = (ListView) findViewById(R.id.list_importer);
     }
 
     @Override
