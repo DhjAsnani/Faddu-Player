@@ -10,17 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.net.URI;
 import java.util.ArrayList;
 
-public class ActivityDisplaySngs extends AppCompatActivity implements View.OnClickListener {
+public class ActivityDisplaySngs extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     Button importButton;
     private String[] STAR = {"*"};
     ListView songListView;
+    ArrayList<Song> songList;
+    ArrayAdapter<Song> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        songList = listAllSongs();
 
     }
 
@@ -77,5 +81,10 @@ public class ActivityDisplaySngs extends AppCompatActivity implements View.OnCli
     private static boolean isSdCardPresent()
     {
         return android.os.Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

@@ -73,4 +73,9 @@ public class songListAdapter  extends BaseAdapter{
         textView_duration.setText(SongList.get(position).getmSongDuration());
         return convertView;
     }
+    public void setSongList(ArrayList<Song> list)
+    {
+        SongList = list;
+        this.notifyDataSetChanged();
+    }
 }
