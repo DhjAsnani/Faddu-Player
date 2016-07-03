@@ -37,9 +37,15 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     private static final int REQUEST_STATE_PLAYING = 102;
     private static final int REQUEST_CODE_NEXT = 103;
     private static final int REQUEST_CODE_STOP = 104;
-    private static int NOTIFICATION_IS = 11;
+    public static int NOTIFICATION_IS = 11;
     private Notification.Builder notificationBuilerd;
     private Notification mNotification;
+
+    public void setSelectedSong(int position, int notificationIs) {
+        SONG_POS = position;
+        NOTIFICATION_IS = notificationIs;
+        
+    }
 
 
     // creating binder for passing current service to activity
@@ -48,6 +54,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
             return MusicService.this;
         }
     }
+
+    public void setSongList(ArrayList<Song> listSong){
+        mListSong = listSong;
+    }
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -55,6 +65,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
 
     @Override
     public void onCreate() {
+        super.onCreate();
         mPlayer = new MediaPlayer();
         //wont turn the app off on clicking power button
         mPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
@@ -64,7 +75,8 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         mPlayer.setOnErrorListener(this);
         mPlayer.setOnPreparedListener(this);
         mPlayer.setOnCompletionListener(this);
-        super.onCreate();
+        notificationBuilerd = new Notification.Builder(getApplicationContext());
+
     }
 
     @Override
