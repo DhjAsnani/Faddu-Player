@@ -3,9 +3,11 @@ package son_gohan.fadduplayer;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -39,24 +41,24 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     private Notification mNotification;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onCreate() {
+        mPlayer = new MediaPlayer();
+        //wont turn the app off on clicking power button
+        mPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
+        // for providing info of the audio
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC );
+        super.onCreate();
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
     }
 
     @Override
