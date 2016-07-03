@@ -53,6 +53,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         mPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
         // for providing info of the audio
         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC );
+        // add various listners necessary for songs
+        mPlayer.setOnErrorListener(this);
+        mPlayer.setOnPreparedListener(this);
+        mPlayer.setOnCompletionListener(this);
         super.onCreate();
     }
 
