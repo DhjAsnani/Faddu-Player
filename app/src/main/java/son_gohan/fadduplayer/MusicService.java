@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
@@ -41,6 +42,12 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     private Notification mNotification;
 
 
+    // creating binder for passing current service to activity
+    public class PlayerBinder extends Binder{
+        public MusicService getService(){
+            return MusicService.this;
+        }
+    }
     @Override
     public IBinder onBind(Intent intent) {
         return null;
